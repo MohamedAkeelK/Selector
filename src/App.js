@@ -1,26 +1,78 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react'
+import Shape from "./Shape.js"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Selector extends Component {
+  constructor() {
+    super();
+    this.state = {
+      selectedShape: 'square',
+      shapeCount: 0 ,
+      indShapeCount: 0,
+    };
+  };
+
+  render () {
+    return (
+
+      <div className = "container">
+
+        <div className = "navbar">
+          <div>Selected: </div>
+          <div>{this.state.selectedShape}</div>
+        </div>
+
+        <div className= "shape-list">
+          <Shape shape="square" selectShape={this.selectShape} count={this.count} indCount={this.indCount}/>
+          <Shape shape="circle" selectShape={this.selectShape} count={this.count} indCount={this.indCount}/>
+          <Shape shape="triangle" selectShape={this.selectShape} count={this.count} indCount={this.indCount}/>
+          <Shape shape="trapezium" selectShape={this.selectShape} count={this.count} indCount={this.indCount}/>
+          <Shape shape="oval" selectShape={this.selectShape} count={this.count} indCount={this.indCount}/>
+          <Shape shape="triangle_down" selectShape={this.selectShape} count={this.count} indCount={this.indCount}/>
+          <Shape shape="star" selectShape={this.selectShape} count={this.count} indCount={this.indCount}/>
+        </div>
+
+        <div className= "footer">
+          <div> shape count: </div>
+          <div>{this.state.shapeCount}</div>
+          <div>{this.state.selectedShape}</div>
+          <div>was selected</div>
+          <div>{this.state.indShapeCount}</div>
+        </div>
+
+      </div>
+    )
+  }
+
+  selectShape = (shapeName) => {
+    this.setState({
+      selectedShape: shapeName
+    })
+  }
+
+  count = () => {
+    this.setState({
+      shapeCount: this.state.shapeCount + 1
+    })
+  }
+
+  // currently working on .... 
+  indCount = () => {
+    // if((this.state.selectedShape === 'square') && (this.state.indShapeCount !== 0)) {
+    //   this.setState({
+    //     indShapeCount: 0,
+    //     indShapeCount: this.state.selectedShape = this.state.indShapeCount + 1
+    //   })
+    // }
+    // if((this.state.selectedShape === 'circle') && (this.state.indShapeCount !== 0)) {
+    //   this.setState({
+    //     indShapeCount: 0,
+    //     indShapeCount: this.state.selectedShape = this.state.indShapeCount + 1
+    //   })
+    // }
+
+  }
+
+
 }
 
-export default App;
+export default Selector;
